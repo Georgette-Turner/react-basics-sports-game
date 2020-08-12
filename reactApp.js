@@ -1,17 +1,72 @@
-// An App component under which all other components will be added
-function App (props) {
-  return (
-    <div>
-      <h1>Welcome to the Sports Game starter!</h1>
-      <em>This file represents the way your code should look after completing the <strong>Setup</strong> steps in the instructions.</em>
-    </div>
-  )
+class Team extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            shots: 0,
+            score: 0
+        }
+    }
+
+    shotHandler = () => {
+        let score = this.state.score
+
+        if (Math.random() > 0.5) {
+            score += 1
+        }
+
+        this.setState((state, props) => ({
+            shots: state.shots + 1,
+            score
+        }))
+    }
+
+    render() {
+        return (
+            <div className="Team">
+                <h2>{this.props.name}</h2>
+
+                <div className="identity">
+                    <img src={this.props.logo} alt={this.props.name} />
+                </div>
+
+                <div>
+                    <strong>Shots:</strong> {this.state.shots}
+                </div>
+
+                <div>
+                    <strong>Score</strong> {this.state.score}
+                </div>
+
+                <button onClick={this.shotHandler}>Shoot!</button>
+            </div>
+        )
+    }
 }
 
 
 
-// Render the App
+function App(props) {
+    return (
+        <div className="App">
+            <div className="stats"></div>
+            <Team name="Ypsi Cheetahs"
+                logo="Cheetahs.jpg"
+            />
+            <div className="versus">
+                <h1>VS</h1>
+            </div>
+
+            <Team name="Belleville Lemurs"
+                logo="Lemurs.jpg"
+            />
+        </div>
+    )
+}
+
+
+
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 )

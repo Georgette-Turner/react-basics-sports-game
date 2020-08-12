@@ -1,0 +1,7 @@
+{
+    "editor.fontSize": 12,
+    "editor.cursorStyle": "block",
+    "editor.autoClosingQuotes": "always",
+    "editor.autoIndent": "none",
+    "editor.defaultFormatter": "vscode.configuration-editing"
+}
